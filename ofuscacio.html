@@ -1,20 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    /* Brownish-Gray Background */
+    body {
+        background-color: #5e544b; 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        color: white;
+    }
 
-<!-- saved from url=(0059)file:///C:/Users/adminlocalba/Downloads/ofuscacio.aspx.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>
-	function openDash(dash) {
-		window.open(atob(dash), "_blank");
-	}
-</script>
+    h2 {
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
 
-</head><body><h2>Exemple Botó amb URL Ofuscada</h2>
+    /* Container to keep buttons side-by-side */
+    .button-group {
+        display: flex;
+        gap: 20px; /* Space between buttons */
+        justify-content: center;
+    }
 
-<button onclick="openDash(&#39;aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzM3Lz9zdGFuZGFsb25lPTI=&#39;)">
-    Obrir Dashboard 37
-</button>
+    .btn {
+        border: none;
+        padding: 15px 30px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 8px;
+        min-width: 200px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
 
-<button onclick="openDash(&#39;aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzQwLz9zdGFuZGFsb25lPTI=&#39;)">
-    Obrir Dashboard 40
-</button>
+    /* Royal Blue Button */
+    .blue-btn {
+        background-color: #4169e1;
+        color: white;
+    }
 
+    /* Lime Green Button */
+    .lime-btn {
+        background-color: #32cd32;
+        color: #1a1a1a;
+    }
 
-</body></html>
+    /* Hover effects */
+    .btn:hover {
+        filter: brightness(1.1);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    .btn:active {
+        transform: translateY(0);
+    }
+
+    /* Stack buttons on small mobile screens */
+    @media (max-width: 500px) {
+        .button-group {
+            flex-direction: column;
+        }
+    }
+</style>
+</head>
+<body>
+
+	<script>
+        function openDash(dash) {
+            window.open(atob(dash), "_blank");
+        }
+    </script>
+
+    <h2>Gran Recapte Dades</h2>
+
+    <div class="button-group">
+        <button class="btn blue-btn" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzM3Lz9zdGFuZGFsb25lPTI=')">
+            Obrir Dashboard 37
+        </button>
+
+        <button class="btn lime-btn" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzQwLz9zdGFuZGFsb25lPTI=')">
+            Obrir Dashboard 40
+        </button>
+    </div>
+
+</body>
+</html>
