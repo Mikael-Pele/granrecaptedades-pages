@@ -2,137 +2,125 @@
 <html>
 <head>
 <style>
-    /* Black Background */
     body {
         background-color: black; 
-        font-family: 'Segoe UI', Roboto Condensed;
+        font-family: 'Segoe UI', Roboto, sans-serif;
+        margin: 0;
+        color: white;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100vh;
-        margin: 0;
-        color: white;
-    }
-	
-
-    /* Logo Styling */
-    .logo {
-       <img src="BdA_Logo%20RGB_pos.png" alt="BdA Logo" class="logo"> */
-        height: auto;
-        margin-bottom: 10px;
+        overflow: hidden;
     }
 
     h2 {
         margin-bottom: 20px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        z-index: 10;
     }
 
-    /* Container to keep buttons side-by-side */
-    .button-group {
+    .circle-container {
+        position: relative;
+        width: 600px;
+        height: 600px;
         display: flex;
-        gap: 20px; /* Space between buttons */
         justify-content: center;
+        align-items: center;
+    }
+
+    .center-logo {
+        width: 200px;
+        height: auto;
+        z-index: 5;
+        position: absolute;
     }
 
     .btn {
+        position: absolute;
         border: none;
-        padding: 15px 30px;
+        padding: 15px 20px;
         text-align: center;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: bold;
         cursor: pointer;
-        border-radius: 8px;
-        min-width: 200px;
+        border-radius: 8px; /* Changed to match your previous style */
+        min-width: 160px;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        color: white;
+        z-index: 6;
     }
 
-    /* Royal Blue Button */
-    .blue-btn {
-        background-color: #4169e1;
-        color: white;
-    }
+    /* Position buttons around the center without tilting them */
+    /* Adjust translate(X, Y) to move them further/closer */
+    .btn:nth-child(2) { transform: translate(0, -220px); }    /* Top */
+    .btn:nth-child(3) { transform: translate(240px, -70px); }  /* Top Right */
+    .btn:nth-child(4) { transform: translate(150px, 180px); }  /* Bottom Right */
+    .btn:nth-child(5) { transform: translate(-150px, 180px); } /* Bottom Left */
+    .btn:nth-child(6) { transform: translate(-240px, -70px); } /* Top Left */
 
-    /* Royal Green Button */
-    .lime-btn {
-        background-color: #136207;
-        color: white;
-    }
+    /* Button Colors */
+    .blue-btn    { background-color: #4169e1; }
+    .green-btn   { background-color: #136207; }
+    .orange-btn  { background-color: #D67732; }
+    .purple-btn  { background-color: #7851A9; }
+    .crimson-btn { background-color: #C71585; }
 
-	/* Royal-Orange Button */
-    .orange-btn {
-        background-color: #D67732;
-        color: white;
-    }
-
-	/* Royal-Purple Button */
-    .purple-btn {
-        background-color:#7851A9;
-        color: white;
-    }
-
-	/* Crimson- Button */
-    .crimson-btn {
-        background-color: #C71585;
-        color: white;
-
-
-		
-    /* Hover effects */
     .btn:hover {
-        filter: brightness(1.1);
-        transform: translateY(-3px);
-        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        filter: brightness(1.2);
+        scale: 1.1;
+        box-shadow: 0 0 20px rgba(255,255,255,0.2);
     }
 
-    .btn:active {
-        transform: translateY(0);
-    }
-
-    /* Stack buttons on small mobile screens */
-    @media (max-width: 500px) {
-        .button-group {
+    @media (max-width: 650px) {
+        .circle-container {
+            width: auto;
+            height: auto;
             flex-direction: column;
+            gap: 15px;
+        }
+        .center-logo, .btn {
+            position: static;
+            transform: none !important;
         }
     }
 </style>
 </head>
 <body>
 
-	 <img src="BdA_Logo RGB_pos.png" alt="BdA Logo" style="width: 250px; height: auto;">
-
-	<script>
-        function openDash(dash) {
-            window.open(atob(dash), "_blank");
-        }
-    </script>
-
     <h2>Quadres de Comandament</h2>
 
-    <div class="button-group">
+    <div class="circle-container">
+        <!-- Logo must be first so nth-child(2) is the first button -->
+        <img src="BdA_Logo RGB_pos.png" alt="BdA Logo" class="center-logo">
+
         <button class="btn blue-btn" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzM3Lz9zdGFuZGFsb25lPTI=')">
             Foodback
         </button>
 
-        <button class="btn lime-btn" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzQwLz9zdGFuZGFsb25lPTI=')">
+        <button class="btn green-btn" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzQwLz9zdGFuZGFsb25lPTI=')">
             Tribal
         </button>
 
-		<button  class="btn orange-btn" onclick="openDash(`aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzM1Lz9zdGFuZGFsb25lPTI=`)">
-        SinergiaCRM
-    </button>
+        <button class="btn orange-btn" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzM1Lz9zdGFuZGFsb25lPTI=')">
+            SinergiaCRM
+        </button>
 
-		<button  class="btn purple-btn" onclick="openDash(`aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzMwLz9zdGFuZGFsb25lPTI=`)">
-        Gran Recapte
-    </button>
+        <button class="btn purple-btn" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzMwLz9zdGFuZGFsb25lPTI=')">
+            Gran Recapte
+        </button>
 
-		<button  class="btn crimson-btn" onclick="openDash(`aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzQyLz9zdGFuZGFsb25lPTI=`)">
-        Marketing
-    </button>
-
-		
+        <button class="btn crimson-btn" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzQyLz9zdGFuZGFsb25lPTI=')">
+            Marketing
+        </button>
     </div>
+
+    <script>
+        function openDash(dash) {
+            window.open(atob(dash), "_blank");
+        }
+    </script>
 
 </body>
 </html>
