@@ -4,116 +4,119 @@
 <style>
     body {
         background-color: black;
-        font-family: 'Segoe UI', Roboto, sans-serif;
+        font-family: 'Segoe UI', Arial, sans-serif;
         margin: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100vh;
-        overflow: hidden;
     }
 
-    h2 { margin-bottom: 20px; z-index: 20; color: white; }
+    h2 { color: white; margin-bottom: 30px; letter-spacing: 2px; }
 
-    /* The main board container */
-    .dartboard {
+    /* The main circular container */
+    .emblem-container {
         position: relative;
-        width: 500px;
-        height: 500px;
-        border-radius: 50%;
-        overflow: visible;
+        width: 550px;
+        height: 550px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    /* Central Bullseye (Logo) */
-    .bullseye-logo {
+    /* Central Logo (The inner bull) */
+    .center-logo-container {
         position: absolute;
-        width: 160px;
-        height: 160px;
-        background-color: black;
+        width: 320px;
+        height: 320px;
+        background-color: #111; /* Dark core for the logo */
         border-radius: 50%;
-        z-index: 10;
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        z-index: 10;
+        box-shadow: inset 0 0 20px rgba(255,255,255,0.1), 0 0 15px rgba(0,0,0,0.5);
     }
 
-    .bullseye-logo img {
-        width: 80%;
+    .center-logo-container img {
+        width: 75%;
         height: auto;
     }
 
-    /* Common Button/Segment Style */
-    .segment {
-        position: absolute;
+    /* The SVG Ring Styling */
+    svg {
         width: 100%;
         height: 100%;
-        border: none;
+        transform: rotate(-90deg); /* Start the circle from the top */
+    }
+
+    .outer-ring {
+        fill: white;
+        stroke: #4169e1; /* Royal Blue border line */
+        stroke-width: 4;
+    }
+
+    /* Clickable Text Segments */
+    text {
+        font-weight: 900;
+        font-size: 24px;
         cursor: pointer;
-        color: white;
-        font-weight: bold;
-        font-size: 16px;
         transition: all 0.3s ease;
-        /* Clip-path creates the "wedge" shape */
-        clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 40%);
+        text-transform: uppercase;
     }
 
-    /* Position each segment around the center */
-    /* We rotate the segment's position, but NOT its internal content */
-    .seg-1 { background-color: #4169e1; transform: rotate(0deg); }
-    .seg-2 { background-color: #136207; transform: rotate(72deg); }
-    .seg-3 { background-color: #D67732; transform: rotate(144deg); }
-    .seg-4 { background-color: #7851A9; transform: rotate(216deg); }
-    .seg-5 { background-color: #C71585; transform: rotate(288deg); }
-
-    /* Fix text alignment so it isn't rotated or upside down */
-    .btn-text {
-        position: absolute;
-        width: 120px;
-        top: 15%;
-        left: 60%;
-        transform-origin: center;
+    text:hover {
+        font-size: 28px;
+        filter: brightness(1.5);
     }
 
-    /* Undo the rotation of the parent segment so text stays level */
-    .seg-1 .btn-text { transform: rotate(0deg); }
-    .seg-2 .btn-text { transform: rotate(-72deg); }
-    .seg-3 .btn-text { transform: rotate(-144deg); }
-    .seg-4 .btn-text { transform: rotate(-216deg); }
-    .seg-5 .btn-text { transform: rotate(-288deg); }
+    /* Button specific colors */
+    .btn-blue    { fill: #4169e1; }
+    .btn-green   { fill: #136207; }
+    .btn-orange  { fill: #D67732; }
+    .btn-purple  { fill: #7851A9; }
+    .btn-crimson { fill: #C71585; }
 
-    .segment:hover {
-        filter: brightness(1.3);
-        z-index: 11;
-        scale: 1.05;
-    }
-
-    /* Mobile Fallback */
-    @media (max-width: 550px) {
-        .dartboard { width: 300px; height: 300px; }
-        .bullseye-logo { width: 100px; height: 100px; }
-        .btn-text { font-size: 12px; width: 80px; }
-    }
 </style>
 </head>
 <body>
 
     <h2>Quadres de Comandament</h2>
 
-    <div class="dartboard">
-        <div class="bullseye-logo">
-            <img src="BdA_Logo RGB_pos.png" alt="Logo">
+    <div class="emblem-container">
+        <!-- Inner Bullseye -->
+        <div class="center-logo-container">
+            <img src="BdA_Logo RGB_pos.png" alt="BdA Logo">
         </div>
 
-        <button class="segment seg-1" onclick="openDash('...')"><span class="btn-text">Foodback</span></button>
-        <button class="segment seg-2" onclick="openDash('...')"><span class="btn-text">Tribal</span></button>
-        <button class="segment seg-3" onclick="openDash('...')"><span class="btn-text">SinergiaCRM</span></button>
-        <button class="segment seg-4" onclick="openDash('...')"><span class="btn-text">Gran Recapte</span></button>
-        <button class="segment seg-5" onclick="openDash('...')"><span class="btn-text">Marketing</span></button>
+        <!-- Outer Ring with Curved Text Buttons -->
+        <svg viewBox="0 0 500 500">
+            <!-- The White Ring Path -->
+            <path id="circlePath" d="M 250, 250 m -210, 0 a 210,210 0 1,1 420,0 a 210,210 0 1,1 -420,0" fill="none" />
+            <circle cx="250" cy="250" r="235" class="outer-ring" />
+
+            <!-- Labels spaced evenly (20% intervals) -->
+            <text class="btn-blue" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzM3Lz9zdGFuZGFsb25lPTI=')">
+                <textPath xlink:href="#circlePath" startOffset="0%">• Foodback</textPath>
+            </text>
+
+            <text class="btn-green" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzQwLz9zdGFuZGFsb25lPTI=')">
+                <textPath xlink:href="#circlePath" startOffset="20%">• Tribal</textPath>
+            </text>
+
+            <text class="btn-orange" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzM1Lz9zdGFuZGFsb25lPTI=')">
+                <textPath xlink:href="#circlePath" startOffset="40%">• SinergiaCRM</textPath>
+            </text>
+
+            <text class="btn-purple" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzMwLz9zdGFuZGFsb25lPTI=')">
+                <textPath xlink:href="#circlePath" startOffset="60%">• Gran Recapte</textPath>
+            </text>
+
+            <text class="btn-crimson" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzQyLz9zdGFuZGFsb25lPTI=')">
+                <textPath xlink:href="#circlePath" startOffset="80%">• Marketing</textPath>
+            </text>
+        </svg>
     </div>
 
     <script>
