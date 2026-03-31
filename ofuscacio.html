@@ -125,5 +125,14 @@
         }
     </script>
 
+   <script>// This prevents the browser from remembering your scroll position
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+// This forces a scroll to the top immediately upon loading
+window.scrollTo(0, 0);
+</script>
+
 </body>
 </html>
