@@ -3,10 +3,10 @@
 <head>
 <style>
     body {
-        background-color: white; 
+        background-color: black; 
         font-family: 'Segoe UI', Roboto, sans-serif;
         margin: 0;
-        color: black;
+        color: white;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -30,41 +30,35 @@
     }
 
     .center-logo {
-        width: 220px;
+        width: 200px;
         height: auto;
         z-index: 5;
         position: absolute;
     }
 
-    /* Round Button Styling */
     .btn {
         position: absolute;
         border: none;
-        width: 120px;       /* Fixed width */
-        height: 120px;      /* Fixed height makes it a circle */
-        border-radius: 50%; /* Perfect circle */
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding: 15px 20px;
         text-align: center;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: bold;
         cursor: pointer;
+        border-radius: 8px; /* Changed to match your previous style */
+        min-width: 160px;
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         color: white;
         z-index: 6;
-        padding: 10px;      /* Prevents text touching edges */
-        line-height: 1.2;
     }
 
-    /* Positioning (X, Y) - Keeps buttons level */
-    /* Adjust translate values to move buttons closer/further */
+    /* Position buttons around the center without tilting them */
+    /* Adjust translate(X, Y) to move them further/closer */
     .btn:nth-child(2) { transform: translate(0, -220px); }    /* Top */
-    .btn:nth-child(3) { transform: translate(210px, -70px); }  /* Top Right */
-    .btn:nth-child(4) { transform: translate(130px, 180px); }  /* Bottom Right */
-    .btn:nth-child(5) { transform: translate(-130px, 180px); } /* Bottom Left */
-    .btn:nth-child(6) { transform: translate(-210px, -70px); } /* Top Left */
+    .btn:nth-child(3) { transform: translate(240px, -70px); }  /* Top Right */
+    .btn:nth-child(4) { transform: translate(150px, 180px); }  /* Bottom Right */
+    .btn:nth-child(5) { transform: translate(-150px, 180px); } /* Bottom Left */
+    .btn:nth-child(6) { transform: translate(-240px, -70px); } /* Top Left */
 
     /* Button Colors */
     .blue-btn    { background-color: #4169e1; }
@@ -75,13 +69,13 @@
 
     .btn:hover {
         filter: brightness(1.2);
-        transform: scale(1.1) !important; /* Scale up slightly on hover */
+        scale: 1.1;
         box-shadow: 0 0 20px rgba(255,255,255,0.2);
     }
 
-    /* Mobile: Stack them */
     @media (max-width: 650px) {
         .circle-container {
+            width: auto;
             height: auto;
             flex-direction: column;
             gap: 15px;
@@ -89,18 +83,14 @@
         .center-logo, .btn {
             position: static;
             transform: none !important;
-            width: 200px;
-            height: auto;
-            border-radius: 8px;
         }
     }
 </style>
 </head>
 <body>
 
-    <h2>Quadres de Comandament</h2>
-
     <div class="circle-container">
+        <!-- Logo must be first so nth-child(2) is the first button -->
         <img src="BdA_Logo RGB_pos.png" alt="BdA Logo" class="center-logo">
 
         <button class="btn blue-btn" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzM3Lz9zdGFuZGFsb25lPTI=')">
@@ -112,7 +102,7 @@
         </button>
 
         <button class="btn orange-btn" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzM1Lz9zdGFuZGFsb25lPTI=')">
-            Sinergia CRM
+            SinergiaCRM
         </button>
 
         <button class="btn purple-btn" onclick="openDash('aHR0cHM6Ly9ncmFucmVjYXB0ZS5kYXRhbGFiLmNhdC9sb2dpbj91c2VybmFtZT1yZWFkb25seSZyZWRpcmVjdD0vc3VwZXJzZXQvZGFzaGJvYXJkLzMwLz9zdGFuZGFsb25lPTI=')">
