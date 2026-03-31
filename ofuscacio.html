@@ -57,12 +57,15 @@
     }
 
     /* Positions for Circular Layout */
-    .btn:nth-child(2) { transform: translate(0, -220px); }    
-    .btn:nth-child(3) { transform: translate(240px, -70px); }  
-    .btn:nth-child(4) { transform: translate(150px, 180px); }  
-    .btn:nth-child(5) { transform: translate(-150px, 180px); } 
-    .btn:nth-child(6) { transform: translate(-240px, -70px); }
-    .btn:nth-child(7) { transform: translate(-190px, -110px); }
+    /* 7 Buttons spaced evenly at a 220px radius */
+.btn:nth-of-type(1) { transform: translate(0px, -220px); }     /* 12 o'clock */
+.btn:nth-of-type(2) { transform: translate(172px, -137px); }   /* ~1:45 */
+.btn:nth-of-type(3) { transform: translate(214px, 49px); }     /* ~3:30 */
+.btn:nth-of-type(4) { transform: translate(95px, 198px); }     /* ~5:15 */
+.btn:nth-of-type(5) { transform: translate(-95px, 198px); }    /* ~6:45 */
+.btn:nth-of-type(6) { transform: translate(-214px, 49px); }    /* ~8:30 */
+.btn:nth-of-type(7) { transform: translate(-172px, -137px); }  /* ~10:15 */
+
 
     .blue-btn    { background-color: #4169e1; }
     .green-btn   { background-color: #136207; }
